@@ -20,7 +20,16 @@
     <%= f.text_area :body %>
   </div>
   <div class="field">
+    <%= label_tag "Author" %><br />
       <%= collection_select(:article, :author_id, @authors, :id, :full_name, prompt: true)  %> </div>
+    <div class="field">
+      <%= label_tag "Select category" %><br /> 
+      <% @categories.each do |category| %>
+        <%= check_box_tag 'category_ids[]', category.id %>
+        <%= h category.name %>
+      <% end %>
+    </div>
+    <br />
   <div class="actions">
     <%= f.submit %>
   </div>

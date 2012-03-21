@@ -1,0 +1,3 @@
+<%= check_box_tag 'category_ids[]', category.id, @article.categories.include?(category)  %>
+<%= h category.name if category %>
+ 

@@ -1,10 +1,8 @@
 Summit2012Kt::Application.routes.draw do
+  root :to => 'articles#index'
   resources :categories
-
   resources :articles
-
   get "pages/index"
-  root :to => 'pages#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

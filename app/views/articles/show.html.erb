@@ -1,20 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<div>
   <b>Title:</b>
   <%= @article.title %>
-</p>
+</div>
 
-<p>
+<div>
   <b>Body:</b>
   <%= @article.body %>
-</p>
+</div>
 
-<p>
+<div>
   <b>Author:</b>
-  <%= @article.author_id %>
-</p>
+  <%= @article.author.full_name %>
+</div>
+<div>
+ <b>Categories:</b>
+ <%= render partial: "category_display", locals: { categories: @article.categories } %>
+     </div>
 
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Edit', edit_article_path(@article), class: "button" %> 
+<%= link_to 'Back', articles_path, class: "button" %>

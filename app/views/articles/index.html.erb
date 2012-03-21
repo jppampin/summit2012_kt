@@ -16,19 +16,16 @@
     <td><%= article.title %></td>
     <td><%= article.body %></td>
     <td><%= article.author.full_name if article.author %></td>
-    <td><ul>
-        <% article.categories.each do |category| %>
-          <li><%= category.name %></li> 
-      <% end %>
-        </ul>
-      </td>
-    <td><%= link_to 'Show', article %></td>
-    <td><%= link_to 'Edit', edit_article_path(article) %></td>
-    <td><%= link_to 'Destroy', article, confirm: 'Are you sure?', method: :delete %></td>
+    <td>
+      <%= render partial: "category_display", locals: { categories: article.categories } %>
+     </td>
+    <td><%= link_to 'Show', article, class: "button" %></td>
+    <td><%= link_to 'Edit', edit_article_path(article), class: "button" %></td>
+    <td><%= link_to 'Destroy', article, confirm: 'Are you sure?', method: :delete, class: "button" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Article', new_article_path %>
+<%= link_to 'New Article', new_article_path, class: "button" %>

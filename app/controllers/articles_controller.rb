@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_filter :get_authors
+  before_filter :get_authors, only: [:new, :edit]
 
   def get_authors
     @authors = Author.all
@@ -47,7 +47,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(params[:article])
     categories = Category.find(params[:category_ids]) if params[:category_ids]
-    @article.categories << categories if categories  
+    @article.categories.concat categories if categories  
 
     respond_to do |format|
       if @article.save
@@ -66,7 +66,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     categories = Category.find(params[:category_ids]) if params[:category_ids]
     @article.categories.clear 
-    @article.categories << categories if categories  
+    @article.categories.concat categories if categories  
 
     respond_to do |format|
       if @article.update_attributes(params[:article])

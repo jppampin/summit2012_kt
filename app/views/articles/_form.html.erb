@@ -24,13 +24,14 @@
       <%= collection_select(:article, :author_id, @authors, :id, :full_name, prompt: true)  %> </div>
     <div class="field">
       <%= label_tag "Select category" %><br /> 
-      <% @categories.each do |category| %>
-        <%= check_box_tag 'category_ids[]', category.id %>
-        <%= h category.name %>
-      <% end %>
+      <% #@categories.each do |category| %>
+<% #check_box_tag 'category_ids[]', category.id, @article.categories.include?(category) %>
+<% #h category.name %>
+    <%= render partial: 'category', collection: @categories %>
+    <% # end %>
     </div>
     <br />
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  %>
   </div>
 <% end %>

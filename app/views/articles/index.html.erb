@@ -5,6 +5,7 @@
     <th>Title</th>
     <th>Body</th>
     <th>Author</th>
+    <th>Categories</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,7 +15,13 @@
   <tr>
     <td><%= article.title %></td>
     <td><%= article.body %></td>
-    <td><%= article.author_id %></td>
+    <td><%= article.author.full_name if article.author %></td>
+    <td><ul>
+        <% article.categories.each do |category| %>
+          <li><%= category.name %></li> 
+      <% end %>
+        </ul>
+      </td>
     <td><%= link_to 'Show', article %></td>
     <td><%= link_to 'Edit', edit_article_path(article) %></td>
     <td><%= link_to 'Destroy', article, confirm: 'Are you sure?', method: :delete %></td>

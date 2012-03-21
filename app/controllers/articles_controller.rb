@@ -46,15 +46,16 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(params[:article])
-    categories = Cateogry.find(params[:cateogry_ids])
-      
+    categories = Category.find(params[:category_ids]) if params[:category_ids]
+    @article.categories << categories if categories  
+
     respond_to do |format|
       if @article.save
-      #  format.html { redirect_to @article, notice: 'Article was successfully created.' }
-      #  format.json { render json: @article, status: :created, location: @article }
+        format.html { redirect_to @article, notice: 'Article was successfully created.' }
+        format.json { render json: @article, status: :created, location: @article }
       else
-      #  format.html { render action: "new" }
-      #  format.json { render json: @article.errors, status: :unprocessable_entity }
+        format.html { render action: "new" }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,6 +64,9 @@ class ArticlesController < ApplicationController
   # PUT /articles/1.json
   def update
     @article = Article.find(params[:id])
+    categories = Category.find(params[:category_ids]) if params[:category_ids]
+    @article.categories.clear 
+    @article.categories << categories if categories  
 
     respond_to do |format|
       if @article.update_attributes(params[:article])

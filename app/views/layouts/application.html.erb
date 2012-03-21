@@ -2,13 +2,24 @@
 <html>
 <head>
   <title>Summit2012Kt</title>
+  <%= stylesheet_link_tag    "blueprint/screen", media: "screen, projection" %>
+  <%= stylesheet_link_tag    "blueprint/print", media: "print" %>
+  <!--[if lt IE 8]>
+  <%= stylesheet_link_tag    "blueprint/ie", media: "screen, projection" %>
+  <![endif]-->
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="container ">
+  <h1> Test App to build summit exersices </h1>
+  <hr/>
+  <div class="span-14 colborder"  >
+    <%= yield %>
+  </div>
+  <div class="span-9 last">  <%= render @categories  %></div>
+  <div class="span-24 bottom last" > footer </div>
+</div>
 </body>
 </html>

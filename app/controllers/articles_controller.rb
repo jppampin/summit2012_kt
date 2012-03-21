@@ -46,8 +46,8 @@ class ArticlesController < ApplicationController
   # POST /articles.json
   def create
     @article = Article.new(params[:article])
-    render text: "Hola: #{params[:category_ids]} "
-
+    categories = Cateogry.find(params[:cateogry_ids])
+      
     respond_to do |format|
       if @article.save
       #  format.html { redirect_to @article, notice: 'Article was successfully created.' }

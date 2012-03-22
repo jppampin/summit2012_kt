@@ -11,14 +11,19 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <div class="container ">
-  <h1> Test App to build summit exercises </h1>
-  <hr/>
-  <div class="span-14 colborder"  >
+<body class="darkblue">
+  <div class="wrapper">
+    <div class="container ">
+      <div class="span-24 last prepend-top">
+        <h1> Test App to build summit exercises </h1>
+      </div>
+    </div>
+  </div>
+  <div class="container prepend-top">
+  <div class="span-17 border"  >
     <%= yield %>
   </div>
-  <div class="span-8 last box"> 
+  <div class="span-6 box last"> 
     <h2 class="alt">Categories</h2> 
     <%= render @categories  %></div>
   <div class="span-24 bottom last" > footer </div>
